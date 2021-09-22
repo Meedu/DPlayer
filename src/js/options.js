@@ -21,6 +21,12 @@ export default (options) => {
         mutex: true,
         pluginOptions: { hls: {}, flv: {}, dash: {}, webtorrent: {} },
         try: false,
+        bulletSecret: {
+            enabled: false,
+            text: '',
+            color: '',
+            size: '',
+        },
     };
     for (const defaultKey in defaultOption) {
         if (defaultOption.hasOwnProperty(defaultKey) && !options.hasOwnProperty(defaultKey)) {

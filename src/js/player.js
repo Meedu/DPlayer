@@ -21,6 +21,7 @@ import ContextMenu from './contextmenu';
 import InfoPanel from './info-panel';
 import tplVideo from '../template/video.art';
 import TrySee from './try-see';
+import BulletSecret from './bullet-secret';
 
 let index = 0;
 const instances = [];
@@ -146,6 +147,8 @@ class DPlayer {
         this.infoPanel = new InfoPanel(this);
 
         this.trySee = new TrySee(this);
+
+        this.bulletSecret = new BulletSecret(this);
 
         if (!this.danmaku && this.options.autoplay) {
             this.play();
@@ -613,6 +616,7 @@ class DPlayer {
         this.pause();
         this.controller.destroy();
         this.timer.destroy();
+        this.bulletSecret.destroy();
         this.video.src = '';
         this.container.innerHTML = '';
         this.events.trigger('destroy');
