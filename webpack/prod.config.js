@@ -10,7 +10,7 @@ module.exports = {
 
     bail: true,
 
-    devtool: 'source-map',
+    devtool: false,
 
     entry: {
         DPlayer: './src/js/index.js',
