@@ -19,8 +19,13 @@
             screenshot: true,
             video: {
                 url: 'https://player.alicdn.com/video/aliyunmedia.mp4',
-            }
+            },
+            try: true
         });
+
+        dp.on('sub_course', function () {
+            console.log('购买课程');
+        })
     </script>
 
 </body>

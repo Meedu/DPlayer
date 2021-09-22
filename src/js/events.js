@@ -52,6 +52,7 @@ class Events {
             'subtitle_show',
             'subtitle_hide',
             'subtitle_change',
+            'sub_course',
         ];
     }
 

@@ -1,0 +1,21 @@
+.dplayer-meedu-try-alert {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(white, .2);
+    color: white;
+    box-sizing: border-box;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    a {
+        color: orange;
+        text-decoration: none;
+        font-weight: bolder;
+    }
+}

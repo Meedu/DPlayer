@@ -1,4 +1,9 @@
 <div class="dplayer-mask"></div>
+{{ if options.try }}
+<div class="dplayer-meedu-try-alert">
+    您正在观看试看内容，观看完整内容请订阅 <a href="javascript:void(0)">订阅课程</a>
+</div>
+{{ /if }}
 <div class="dplayer-video-wrap">
     {{ include './video.art' video }}
     {{ if options.logo }}
@@ -205,10 +210,6 @@
     </div>
     <div class="dplayer-info-panel-item dplayer-info-panel-item-type">
         <span class="dplayer-info-panel-item-title">Video type</span>
-        <span class="dplayer-info-panel-item-data"></span>
-    </div>
-    <div class="dplayer-info-panel-item dplayer-info-panel-item-url">
-        <span class="dplayer-info-panel-item-title">Video url</span>
         <span class="dplayer-info-panel-item-data"></span>
     </div>
     <div class="dplayer-info-panel-item dplayer-info-panel-item-resolution">

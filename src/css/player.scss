@@ -31,6 +31,7 @@
         transform: translate(0, 0);
 
         .dplayer-danmaku {
+
             .dplayer-danmaku-top,
             .dplayer-danmaku-bottom {
                 &.dplayer-danmaku-move {
@@ -50,6 +51,7 @@
 
     &.dplayer-no-danmaku {
         .dplayer-controller .dplayer-icons .dplayer-setting .dplayer-setting-box {
+
             .dplayer-setting-showdan,
             .dplayer-setting-danmaku,
             .dplayer-setting-danunlimit {
@@ -70,12 +72,15 @@
         .dplayer-time {
             display: none;
         }
+
         .dplayer-bar-wrap {
             display: none;
         }
+
         .dplayer-setting-speed {
             display: none;
         }
+
         .dplayer-setting-loop {
             display: none;
         }
@@ -91,6 +96,7 @@
         .dplayer-danmaku {
             font-size: 18px;
         }
+
         .dplayer-icon {
             margin: 0 -3px;
         }
@@ -105,6 +111,7 @@
             .dplayer-controller-mask {
                 opacity: 0;
             }
+
             .dplayer-controller {
                 opacity: 0;
             }
@@ -113,6 +120,7 @@
                 .dplayer-controller-mask {
                     opacity: 1;
                 }
+
                 .dplayer-controller {
                     opacity: 1;
                 }
@@ -128,6 +136,7 @@
 
     &.dplayer-loading,
     &.dplayer-paused {
+
         .dplayer-danmaku,
         .dplayer-danmaku-move {
             animation-play-state: paused;
@@ -141,19 +150,23 @@
             opacity: 0;
             transform: translateY(100%);
         }
+
         .dplayer-controller {
             opacity: 0;
             transform: translateY(100%);
         }
     }
+
     &.dplayer-show-controller {
         .dplayer-controller-mask {
             opacity: 1;
         }
+
         .dplayer-controller {
             opacity: 1;
         }
     }
+
     &.dplayer-fulled {
         position: fixed;
         z-index: 100000;
@@ -162,8 +175,10 @@
         width: 100% !important;
         height: 100% !important;
     }
+
     &.dplayer-mobile {
         .dplayer-controller .dplayer-icons {
+
             .dplayer-volume,
             .dplayer-camera-icon,
             .dplayer-airplay-icon,

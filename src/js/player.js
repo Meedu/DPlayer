@@ -20,6 +20,7 @@ import HotKey from './hotkey';
 import ContextMenu from './contextmenu';
 import InfoPanel from './info-panel';
 import tplVideo from '../template/video.art';
+import TrySee from './try-see';
 
 let index = 0;
 const instances = [];
@@ -143,6 +144,8 @@ class DPlayer {
         this.initVideo(this.video, (this.quality && this.quality.type) || this.options.video.type);
 
         this.infoPanel = new InfoPanel(this);
+
+        this.trySee = new TrySee(this);
 
         if (!this.danmaku && this.options.autoplay) {
             this.play();
