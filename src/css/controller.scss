@@ -522,17 +522,6 @@
             display: inline-block;
             height: 100%;
             position: relative;
-            &:hover {
-                .dplayer-full-in-icon {
-                    display: block;
-                }
-            }
-            .dplayer-full-in-icon {
-                position: absolute;
-                top: -30px;
-                z-index: 1;
-                display: none;
-            }
         }
         .dplayer-quality {
             position: relative;

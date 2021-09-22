@@ -11,19 +11,6 @@ class Setting {
             this.show();
         });
 
-        // loop
-        this.loop = this.player.options.loop;
-        this.player.template.loopToggle.checked = this.loop;
-        this.player.template.loop.addEventListener('click', () => {
-            this.player.template.loopToggle.checked = !this.player.template.loopToggle.checked;
-            if (this.player.template.loopToggle.checked) {
-                this.loop = true;
-            } else {
-                this.loop = false;
-            }
-            this.hide();
-        });
-
         // show danmaku
         this.showDanmaku = this.player.user.get('danmaku');
         if (!this.showDanmaku) {

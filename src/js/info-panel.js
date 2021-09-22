@@ -37,7 +37,6 @@ class InfoPanel {
     update() {
         this.template.infoVersion.innerHTML = `v${DPLAYER_VERSION} ${GIT_HASH}`;
         this.template.infoType.innerHTML = this.player.type;
-        this.template.infoUrl.innerHTML = this.player.options.video.url;
         this.template.infoResolution.innerHTML = `${this.player.video.videoWidth} x ${this.player.video.videoHeight}`;
         this.template.infoDuration.innerHTML = this.player.video.duration;
         if (this.player.options.danmaku) {

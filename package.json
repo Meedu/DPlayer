@@ -10,9 +10,7 @@
         "test": "eslint src webpack",
         "format": "eslint \"**/*.js\" --fix && prettier \"**/*.{js,json,md}\" --write",
         "format:staged": "eslint \"**/*.js\" --fix && pretty-quick --staged --verbose --pattern \"**/*.{js,json,md}\"",
-        "format:check": "eslint \"**/*.js\" && prettier-check \"**/*.{js,json,md}\"",
-        "docs:dev": "vuepress dev docs",
-        "docs:build": "vuepress build docs"
+        "format:check": "eslint \"**/*.js\" && prettier-check \"**/*.{js,json,md}\""
     },
     "files": [
         "dist"
