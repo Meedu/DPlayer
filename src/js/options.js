@@ -1,4 +1,3 @@
-/* global DPLAYER_VERSION */
 import defaultApiBackend from './api.js';
 
 export default (options) => {
