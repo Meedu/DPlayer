@@ -9,20 +9,18 @@ class BulletSecret {
 
     init() {
         this.bulletSecretInterval = setInterval(() => {
-            const domId = this.randomString(12);
-            const top = this.randomNum(0, document.querySelector('.dplayer-video-wrap').offsetHeight);
+            const top = this.randomNum(35, document.querySelector('.dplayer-video-wrap').offsetHeight);
             const left = this.randomNum(0, document.querySelector('.dplayer-video-wrap').offsetWidth - 150);
 
             const text = this.player.options.bulletSecret.text;
             const color = this.player.options.bulletSecret.color;
             const size = this.player.options.bulletSecret.size;
-            const parsedDom = new DOMParser().parseFromString(
-                `
-            <div class="${domId}" style="position:absolute;top:${top}px !important;left:${left}px !important;color:${color};width: auto;font-size: ${size}">${text}</div>
-            `,
-                'text/html'
-            );
-            const bulletSecretDom = parsedDom.querySelector('.' + domId);
+
+            var bulletSecretDom = document.createElement('div');
+            bulletSecretDom.setAttribute('style', `position:absolute;top:${top}px;left:${left}px;zIndex:5;color:${color};width:auto;font-size:${size}`);
+
+            bulletSecretDom.appendChild(document.createTextNode(text));
+
             document.querySelector('.dplayer-video-wrap').appendChild(bulletSecretDom);
 
             setTimeout(() => {
