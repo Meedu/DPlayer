@@ -187,7 +187,7 @@
             </button>
         </div>
     </div>
-    <div class="dplayer-bar-wrap">
+    <div class="dplayer-bar-wrap" {{ if options.ban_drag }} style="display:none" {{ /if }}>
         <div class="dplayer-bar-time hidden">00:00</div>
         <div class="dplayer-bar-preview"></div>
         <div class="dplayer-bar">

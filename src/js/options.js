@@ -27,6 +27,7 @@ export default (options) => {
             color: '',
             size: '',
         },
+        ban_drag: false,
     };
     for (const defaultKey in defaultOption) {
         if (defaultOption.hasOwnProperty(defaultKey) && !options.hasOwnProperty(defaultKey)) {

@@ -2,9 +2,11 @@ class TrySee {
     constructor(player) {
         this.player = player;
 
-        this.player.template.meeduSubButton.addEventListener('click', () => {
-            this.player.events.trigger('sub_course');
-        });
+        if (this.player.options.try) {
+            this.player.template.meeduSubButton.addEventListener('click', () => {
+                this.player.events.trigger('sub_course');
+            });
+        }
     }
 }
 
