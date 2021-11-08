@@ -16,7 +16,7 @@ class BulletSecret {
             const color = this.player.options.bulletSecret.color;
             const size = this.player.options.bulletSecret.size;
 
-            var bulletSecretDom = document.createElement('div');
+            const bulletSecretDom = document.createElement('div');
             bulletSecretDom.setAttribute('style', `position:absolute;top:${top}px;left:${left}px;zIndex:5;color:${color};width:auto;font-size:${size}`);
 
             bulletSecretDom.appendChild(document.createTextNode(text));
