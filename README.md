@@ -4,7 +4,7 @@ fork [https://github.com/DIYgod/DPlayer](https://github.com/DIYgod/DPlayer)
 
 ### 跑马灯
 
-```json
+```
 {
     "bulletSecret": {
         "enabled": false,
@@ -17,7 +17,7 @@ fork [https://github.com/DIYgod/DPlayer](https://github.com/DIYgod/DPlayer)
 
 ### 禁止跨进
 
-```json
+```
 {
     "ban_drag": bool
 }
@@ -25,8 +25,19 @@ fork [https://github.com/DIYgod/DPlayer](https://github.com/DIYgod/DPlayer)
 
 ### 试看
 
-```json
+```
 {
     "try": bool
+}
+```
+
+### 定位到上次观看
+
+```
+{
+    "last_see_pos": {
+        "time": "Number",
+        "pos": "Number"
+    }
 }
 ```

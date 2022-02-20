@@ -24,7 +24,9 @@ class BulletSecret {
             document.querySelector('.dplayer-video-wrap').appendChild(bulletSecretDom);
 
             setTimeout(() => {
-                document.querySelector('.dplayer-video-wrap').removeChild(bulletSecretDom);
+                if (document.querySelector('.dplayer-video-wrap')) {
+                    document.querySelector('.dplayer-video-wrap').removeChild(bulletSecretDom);
+                }
             }, 4900);
         }, 5000);
     }

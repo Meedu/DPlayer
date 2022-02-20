@@ -22,6 +22,7 @@ import InfoPanel from './info-panel';
 import tplVideo from '../template/video.art';
 import TrySee from './try-see';
 import BulletSecret from './bullet-secret';
+import LastSeePos from './lastSeePos';
 
 let index = 0;
 const instances = [];
@@ -149,6 +150,8 @@ class DPlayer {
         this.trySee = new TrySee(this);
 
         this.bulletSecret = new BulletSecret(this);
+
+        this.LastSeePos = new LastSeePos(this);
 
         if (!this.danmaku && this.options.autoplay) {
             this.play();

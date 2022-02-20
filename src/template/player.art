@@ -1,7 +1,7 @@
 <div class="dplayer-mask"></div>
 {{ if options.try }}
 <div class="dplayer-meedu-try-alert">
-    您正在观看试看内容，观看完整内容请订阅 <a href="javascript:void(0)">订阅课程</a>
+    您正在观看试看内容，观看完整内容请订阅 <a class="btn-meedu-sub-button" href="javascript:void(0)">订阅课程</a>
 </div>
 {{ /if }}
 <div class="dplayer-video-wrap">
@@ -246,3 +246,6 @@
 <button class="dplayer-mobile-play">
     {{@ icons.play }}
 </button>
+<div class="meedu-last-see-pos meedu-last-see-pos-hide">
+    上次看到 <span class="meedu-last-see-pos-text"></span> <a class="btn-meedu-last-pos" href="javascript:void(0)">跳转</a>
+</div>

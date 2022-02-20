@@ -27,7 +27,11 @@
                 color: 'green',
                 size: '24px'
             },
-            ban_drag: true
+            ban_drag: false,
+            last_see_pos: {
+                pos: 100,
+                time: 10
+            }
         });
 
         dp.on('sub_course', function () {
