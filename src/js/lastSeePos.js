@@ -20,7 +20,7 @@ class LastSeePos {
     }
 
     format() {
-        let pos = this.config.pos;
+        const pos = this.config.pos;
         let h = 0,
             m = 0,
             s = 0;
@@ -28,7 +28,7 @@ class LastSeePos {
         m = parseInt((pos - h * 3600) / 60);
         s = parseInt(pos - h * 3600 - m * 60);
 
-        let str = (h > 0 ? h + ':' : '') + (m >= 10 ? m : '0' + m) + ':' + (s >= 10 ? s : '0' + s);
+        const str = (h > 0 ? h + ':' : '') + (m >= 10 ? m : '0' + m) + ':' + (s >= 10 ? s : '0' + s);
 
         return str;
     }
