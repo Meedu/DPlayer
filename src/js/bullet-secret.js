@@ -13,11 +13,12 @@ class BulletSecret {
             const left = this.randomNum(0, document.querySelector('.dplayer-video-wrap').offsetWidth - 150);
 
             const text = this.player.options.bulletSecret.text;
-            const color = this.player.options.bulletSecret.color;
-            const size = this.player.options.bulletSecret.size;
+            const color = typeof this.player.options.bulletSecret.color === 'undefined' ? 'red' : this.player.options.bulletSecret.color;
+            const size = typeof this.player.options.bulletSecret.size === 'undefined' ? '14px' : this.player.options.bulletSecret.size;
+            const opacity = typeof this.player.options.bulletSecret.opacity === 'undefined' ? 1 : this.player.options.bulletSecret.opacity;
 
             const bulletSecretDom = document.createElement('div');
-            bulletSecretDom.setAttribute('style', `position:absolute;top:${top}px;left:${left}px;zIndex:5;color:${color};width:auto;font-size:${size}`);
+            bulletSecretDom.setAttribute('style', `position:absolute;top:${top}px;left:${left}px;zIndex:5;color:${color};width:auto;font-size:${size};opacity:${opacity}`);
 
             bulletSecretDom.appendChild(document.createTextNode(text));
 

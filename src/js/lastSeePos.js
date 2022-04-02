@@ -1,11 +1,14 @@
 class LastSeePos {
     constructor(player) {
         this.player = player;
-        this.lastSeePosText = player.template.lastSeePosText;
+        // 提示dom
         this.container = player.template.lastSeePos;
+        // 显示时长dom
+        this.lastSeePosText = player.template.lastSeePosText;
+        // 配置
         this.config = player.options.last_see_pos;
 
-        if (typeof this.config !== 'undefined') {
+        if (this.config) {
             this.show();
 
             setTimeout(() => {
