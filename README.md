@@ -41,3 +41,9 @@ fork [https://github.com/DIYgod/DPlayer](https://github.com/DIYgod/DPlayer)
     }
 }
 ```
+
+### 编译
+
+```
+docker run --rm -v /Users/tengteng/work/meedu/DPlayer:/app -w /app  node:14-slim  npm run build
+```
