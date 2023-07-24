@@ -71,6 +71,10 @@ class DPlayer {
         });
 
         this.video = this.template.video;
+        var playerEvents = this.events;
+        this.video.addEventListener('error', function (e) {
+            playerEvents.trigger('play_error', e);
+        });
 
         this.bar = new Bar(this.template);
 
@@ -365,15 +369,24 @@ class DPlayer {
                             this.plugins.hls = hls;
                             hls.loadSource(video.src);
                             hls.attachMedia(video);
+                            var dplayerEvents = this.events;
+                            hls.on(window.Hls.Events.ERROR, function (event, data) {
+                                dplayerEvents.trigger('play_error', {
+                                    event: event,
+                                    type: data.type,
+                                    fatal: data.fatal,
+                                    details: data.details,
+                                });
+                            });
                             this.events.on('destroy', () => {
                                 hls.destroy();
                                 delete this.plugins.hls;
                             });
                         } else {
-                            this.notice('Error: Hls is not supported.');
+                            this.notice('当前浏览器不支持HLS播放');
                         }
                     } else {
-                        this.notice("Error: Can't find Hls.");
+                        this.notice('未引入HLS支持库');
                     }
                     break;
 

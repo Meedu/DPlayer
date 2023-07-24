@@ -26,6 +26,7 @@ class Events {
             'timeupdate',
             'volumechange',
             'waiting',
+            'play_error',
         ];
         this.playerEvents = [
             'screenshot',

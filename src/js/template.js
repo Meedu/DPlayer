@@ -26,6 +26,7 @@ class Template {
                 preload: this.options.preload,
                 url: this.options.video.url,
                 subtitle: this.options.subtitle,
+                isAndroid: window.navigator.userAgent.indexOf('Android') > -1 || window.navigator.userAgent.indexOf('Adr') > -1,
             },
         });
 
