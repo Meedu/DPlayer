@@ -498,7 +498,7 @@ class DPlayer {
                             .then(function () {
                                 aliRts
                                     .subscribe(video.getAttribute('data-live-artc-url'), {
-                                        mediaTimeout: 30000,
+                                        mediaTimeout: 5000,
                                     })
                                     .then((remoteStream) => {
                                         remoteStream.play(video);
