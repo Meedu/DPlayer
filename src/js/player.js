@@ -71,7 +71,7 @@ class DPlayer {
         });
 
         this.video = this.template.video;
-        var _dplayerEvents = this.events;
+        const _dplayerEvents = this.events;
         this.video.addEventListener('error', function (e) {
             _dplayerEvents.trigger('play_error', {
                 from: 'video',
@@ -475,9 +475,9 @@ class DPlayer {
                 // https://help.aliyun.com/zh/live/user-guide/web-rts-sdk-overview?spm=a2c4g.11186623.0.0.eb331a2e6DNPLY
                 case 'artc':
                     if (window.AliRTS) {
-                        var _that = this;
+                        const _that = this;
 
-                        var aliRts = AliRTS.createClient();
+                        const aliRts = window.AliRTS.createClient();
                         aliRts.on('onError', function (e) {
                             _that.events.trigger('play_error', {
                                 from: 'AliRTS',
