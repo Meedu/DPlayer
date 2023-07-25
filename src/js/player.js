@@ -503,7 +503,7 @@ class DPlayer {
                                     .then((remoteStream) => {
                                         remoteStream.play(video);
 
-                                        this.events.on('destroy', () => {
+                                        _that.events.on('destroy', () => {
                                             aliRts.unsubscribe();
                                         });
                                     })
