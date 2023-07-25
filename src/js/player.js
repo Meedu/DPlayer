@@ -71,9 +71,12 @@ class DPlayer {
         });
 
         this.video = this.template.video;
-        var playerEvents = this.events;
+        var _dplayerEvents = this.events;
         this.video.addEventListener('error', function (e) {
-            playerEvents.trigger('play_error', e);
+            _dplayerEvents.trigger('play_error', {
+                from: 'video',
+                e: e,
+            });
         });
 
         this.bar = new Bar(this.template);
@@ -369,13 +372,16 @@ class DPlayer {
                             this.plugins.hls = hls;
                             hls.loadSource(video.src);
                             hls.attachMedia(video);
-                            var dplayerEvents = this.events;
+                            const dplayerEvents = this.events;
                             hls.on(window.Hls.Events.ERROR, function (event, data) {
                                 dplayerEvents.trigger('play_error', {
-                                    event: event,
-                                    type: data.type,
-                                    fatal: data.fatal,
-                                    details: data.details,
+                                    from: 'HLS',
+                                    e: {
+                                        event: event,
+                                        type: data.type,
+                                        fatal: data.fatal,
+                                        details: data.details,
+                                    },
                                 });
                             });
                             this.events.on('destroy', () => {
@@ -463,6 +469,60 @@ class DPlayer {
                         }
                     } else {
                         this.notice("Error: Can't find Webtorrent.");
+                    }
+                    break;
+
+                // https://help.aliyun.com/zh/live/user-guide/web-rts-sdk-overview?spm=a2c4g.11186623.0.0.eb331a2e6DNPLY
+                case 'artc':
+                    if (window.AliRTS) {
+                        var _that = this;
+
+                        var aliRts = AliRTS.createClient();
+                        aliRts.on('onError', function (e) {
+                            _that.events.trigger('play_error', {
+                                from: 'AliRTS',
+                                e: e,
+                            });
+                        });
+                        aliRts.on('onPlayEvent', (e) => {
+                            console.debug('playEvent', e);
+                            if (e.event === 'timeout') {
+                                _that.events.trigger('play_error', {
+                                    from: 'AliRTS',
+                                    e: e,
+                                });
+                            }
+                        });
+                        aliRts
+                            .isSupport({ isReceiveVideo: true })
+                            .then(function () {
+                                aliRts
+                                    .subscribe(video.getAttribute('data-live-artc-url'), {
+                                        mediaTimeout: 30000,
+                                    })
+                                    .then((remoteStream) => {
+                                        remoteStream.play(video);
+
+                                        this.events.on('destroy', () => {
+                                            aliRts.unsubscribe();
+                                        });
+                                    })
+                                    .catch((e) => {
+                                        _that.events.trigger('play_error', {
+                                            from: 'AliRTS',
+                                            e: {
+                                                errorCode: e.errorCode,
+                                                message: e.message,
+                                                extraInfo: e.extraInfo,
+                                            },
+                                        });
+                                    });
+                            })
+                            .catch(function (e) {
+                                _that.notice('当前浏览器不支持播放.错误信息:' + JSON.stringify(e));
+                            });
+                    } else {
+                        this.notice('阿里云播放器未加载');
                     }
                     break;
             }

@@ -27,6 +27,7 @@ class Template {
                 url: this.options.video.url,
                 subtitle: this.options.subtitle,
                 isAndroid: window.navigator.userAgent.indexOf('Android') > -1 || window.navigator.userAgent.indexOf('Adr') > -1,
+                liveArtcUrl: this.options.video.live_artc_url,
             },
         });
 
