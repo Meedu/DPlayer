@@ -372,17 +372,35 @@ class DPlayer {
                             this.plugins.hls = hls;
                             hls.loadSource(video.src);
                             hls.attachMedia(video);
-                            const dplayerEvents = this.events;
+                            const _that = this;
                             hls.on(window.Hls.Events.ERROR, function (event, data) {
-                                dplayerEvents.trigger('play_error', {
-                                    from: 'HLS',
-                                    e: {
-                                        event: event,
-                                        type: data.type,
-                                        fatal: data.fatal,
-                                        details: data.details,
-                                    },
-                                });
+                                switch (data.type) {
+                                    case window.Hls.ErrorTypes.MEDIA_ERROR:
+                                        console.log('fatal media error encountered, try to recover');
+                                        hls.recoverMediaError();
+                                        _that.play();
+                                        setTimeout(function () {
+                                            _that.play();
+                                        }, 1000);
+                                        setTimeout(function () {
+                                            _that.play();
+                                        }, 2000);
+                                        setTimeout(function () {
+                                            _that.play();
+                                        }, 3000);
+                                        break;
+                                    default:
+                                        _that.events.trigger('play_error', {
+                                            from: 'HLS',
+                                            e: {
+                                                event: event,
+                                                type: data.type,
+                                                fatal: data.fatal,
+                                                details: data.details,
+                                            },
+                                        });
+                                        break;
+                                }
                             });
                             this.events.on('destroy', () => {
                                 hls.destroy();
