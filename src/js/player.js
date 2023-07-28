@@ -519,6 +519,8 @@ class DPlayer {
                                         mediaTimeout: 5000,
                                     })
                                     .then((remoteStream) => {
+                                        _that.volume(0, true); //静音播放
+                                        _that.notice('当前为静音播放', 5000);
                                         remoteStream.play(video);
 
                                         _that.events.on('destroy', () => {
