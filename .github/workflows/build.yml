@@ -1,0 +1,32 @@
+name: docker pr
+
+on:
+  push:
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    # 设置 node 版本
+    strategy:
+      matrix:
+        node-version: [14]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      # 设定 node 环境
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      # 安装依赖，相当于 npm ci
+      - name: Install dependencies 📦️
+        run: npm install
+      # 执行构建步骤
+      - name: 构建
+        run: |
+          npm run build
+      - name: Create a Release
+        uses: elgohr/Github-Release-Action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        with:
+          title: dplayer
