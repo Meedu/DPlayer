@@ -25,8 +25,4 @@ jobs:
         run: |
           npm run build
       - name: Create a Release
-        uses: elgohr/Github-Release-Action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          title: dplayer
+        run: gh release create --latest ./dist/*
