@@ -390,7 +390,7 @@ class DPlayer {
                                         _that.play();
                                         _that.play();
                                         _that.seek(window.meeduPlayerCurrentTime || 0);
-                                        
+
                                         _that.notice('已恢复播放');
                                         break;
                                     default:
@@ -609,7 +609,11 @@ class DPlayer {
         });
 
         this.on('timeupdate', () => {
-            window.meeduPlayerCurrentTime = this.video.currentTime;
+            let recordedTime = window.meeduPlayerCurrentTime || 0;
+            if (this.video.currentTime > recordedTime) {
+                window.meeduPlayerCurrentTime = this.video.currentTime;
+            }
+
             this.bar.set('played', this.video.currentTime / this.video.duration, 'width');
             const currentTime = utils.secondToTime(this.video.currentTime);
             if (this.template.ptime.innerHTML !== currentTime) {
