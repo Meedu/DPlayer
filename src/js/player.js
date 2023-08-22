@@ -373,26 +373,25 @@ class DPlayer {
                             hls.loadSource(video.src);
                             hls.attachMedia(video);
                             const _that = this;
-                            let _mediaErrorCount =0;
+                            let _mediaErrorCount = 0;
                             hls.on(window.Hls.Events.ERROR, function (event, data) {
                                 switch (data.type) {
                                     case window.Hls.ErrorTypes.MEDIA_ERROR:
                                         console.log('fatal media error encountered, try to recover');
-                                        if (_mediaErrorCount===1) {//第二次触发mediaError的时候执行
-                                            hls.swapAudioCodec()
+                                        if (_mediaErrorCount === 1) {
+                                            //第二次触发mediaError的时候执行
+                                            hls.swapAudioCodec();
                                         }
                                         hls.recoverMediaError();
                                         _mediaErrorCount++;
-                                        // _that.play();
-                                        // setTimeout(function () {
-                                        //     _that.play();
-                                        // }, 1000);
-                                        // setTimeout(function () {
-                                        //     _that.play();
-                                        // }, 2000);
-                                        // setTimeout(function () {
-                                        //     _that.play();
-                                        // }, 3000);
+
+                                        // 尝试恢复播放
+                                        _that.play();
+                                        _that.play();
+                                        _that.play();
+                                        _that.seek(window.meeduPlayerCurrentTime || 0);
+                                        
+                                        _that.notice('已恢复播放');
                                         break;
                                     default:
                                         _that.events.trigger('play_error', {
@@ -610,6 +609,7 @@ class DPlayer {
         });
 
         this.on('timeupdate', () => {
+            window.meeduPlayerCurrentTime = this.video.currentTime;
             this.bar.set('played', this.video.currentTime / this.video.duration, 'width');
             const currentTime = utils.secondToTime(this.video.currentTime);
             if (this.template.ptime.innerHTML !== currentTime) {
