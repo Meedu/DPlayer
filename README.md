@@ -15,7 +15,7 @@ fork [https://github.com/DIYgod/DPlayer](https://github.com/DIYgod/DPlayer)
 }
 ```
 
-### 禁止跨进
+### 禁止快进
 
 ```
 {
